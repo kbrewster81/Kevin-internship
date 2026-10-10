@@ -14,7 +14,13 @@ const NewItems = () => {
   const [collections, setCollections] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [items, setItems] = useState([]);
-
+  const timerMilliseconds = document.querySelector('.timer__milliseconds');
+  const timerSeconds = document.querySelector('.timer__seconds')
+  const timerMinutes = document.querySelector('.timer__minutes')
+  let cancelled;
+  let startTime;
+  let savedTime= 0;
+  
   useEffect(() => {
     axios
       .get(
@@ -83,8 +89,12 @@ const NewItems = () => {
                       </Link>
                     </div>
 
-                    <div className="de_countdown">{collection.expiryDate}</div>
+                    <div className="de_countdown">{collection.expiryDate}
+                      
 
+
+                    </div>
+                    
                     <div className="nft__item_wrap">
                       <Link to={`/item-details/${collection.nftId}`}>
                         <img

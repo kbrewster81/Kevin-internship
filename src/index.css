@@ -10,3 +10,22 @@
 @import "./css/styles/style.css";
 @import "./css/colors/scheme-01.css";
 @import "./css/styles/coloring.css";
+
+#section-items .nft__item .author_list_pp {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 50px;
+  margin: 0;
+  z-index: 10;
+}
+
+#section-items .nft__item .author_list_pp img {
+  display: block;
+  border-radius: 50%;
+}
+
+#section-items .nft__item .de_countdown {
+  top: 20px;
+  right: 20px;
+}
