@@ -13218,16 +13218,6 @@ a.read_more i {
   border: solid 1px rgba(255, 255, 255, 0.1);
 }
 
-.nft_wrap {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  border-radius: 10px 10px 0 0;
-  -moz-border-radius: 10px 10px 0 0;
-  -webkit-border-radius: 10px 10px 0 0;
-}
-
 .nft_coll:hover img {
   transform: scale(1.05);
 }
@@ -13635,6 +13625,14 @@ a.read_more i {
   padding-left: 70px;
 }
 
+img {
+  width: 100%;
+}
+.nft_wrap {
+  height: auto;
+  position: relative;
+}
+
 .nft__item {
   position: relative;
   padding: 20px;
@@ -13703,7 +13701,7 @@ a.read_more i {
   border-radius: 100% !important;
   -moz-border-radius: 100% !important;
   -webkit-border-radius: 100% !important;
-  position:relative;
+  position: relative;
   width: 100%;
   z-index: 1;
 }
