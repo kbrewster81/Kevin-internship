@@ -71,29 +71,41 @@ const NewItems = () => {
             <Slider {...settings}>
               {items.map((collection) => (
                 <div key={collection.id}>
-                  <div className="nft_coll">
-                    <div className="nft_wrap">
-                      <Link to={`/item-details/${collection.nftId}`}>
-                        <img src={collection.nftImage} alt={collection.title} />
-                      </Link>
-                    </div>
-                    <div className="nft_coll_pp">
+                  <div className="nft__item">
+                    <div className="author_list_pp">
                       <Link to="/author">
-                        <img src={collection.authorImage} alt="" />
+                        <img
+                          className="lazy"
+                          src={collection.authorImage}
+                          alt=""
+                        />
+                        <i className="fa fa-check"></i>
                       </Link>
-                      <i className="fa fa-check"></i>
                     </div>
-                    <div className="nft_coll_info">
-                      <Link to={`/item-details/${collection.id}`}>
+
+                    <div className="de_countdown">{collection.expiryDate}</div>
+
+                    <div className="nft__item_wrap">
+                      <Link to={`/item-details/${collection.nftId}`}>
+                        <img
+                          src={collection.nftImage}
+                          className="lazy nft__item_preview"
+                          alt={collection.title}
+                        />
+                      </Link>
+                    </div>
+
+                    <div className="nft__item_info">
+                      <Link to={`/item-details/${collection.nftId}`}>
                         <h4>{collection.title}</h4>
                       </Link>
-                    </div>
-                    <div className="nft__item_price">
-                      {collection.price} ETH
-                    </div>
-                    <div className="nft__item_like">
-                      <i className="fa fa-heart"></i>
-                      <span>{collection.likes}</span>
+                      <div className="nft__item_price">
+                        {collection.price} ETH
+                      </div>
+                      <div className="nft__item_like">
+                        <i className="fa fa-heart"></i>
+                        <span>{collection.likes}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
