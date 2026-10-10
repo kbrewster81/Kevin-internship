@@ -13700,7 +13700,12 @@ a.read_more i {
 }
 
 .nft__item .author_list_pp {
-  margin: 0;
+  border-radius: 100% !important;
+  -moz-border-radius: 100% !important;
+  -webkit-border-radius: 100% !important;
+  position:relative;
+  width: 100%;
+  z-index: 1;
 }
 
 .nft__item h4 {
