@@ -13,39 +13,36 @@ const ItemDetails = () => {
   const { id: nftId } = useParams();
   const [isLoading, setIsLoading] = useState(true);
 
-
   useEffect(() => {
-  let cancelled = false;
+    let cancelled = false;
 
-  async function getItems() {
-    setIsLoading(true);
-    setItem(null);
+    async function getItems() {
+      setIsLoading(true);
+      setItem(null);
 
-    try {
-      const { data } = await axios.get(
-        `https://us-central1-nft-cloud-functions.cloudfunctions.net/itemDetails?nftId=${nftId}`
-      );
+      try {
+        const { data } = await axios.get(
+          `https://us-central1-nft-cloud-functions.cloudfunctions.net/itemDetails?nftId=${nftId}`,
+        );
 
-      console.log("Item Details Data:", data);
-
-      if (!cancelled) {
-        setItem(data);
-      }
-    } catch (error) {
-      console.error("Error fetching item:", error);
-    } finally {
-      if (!cancelled) {
-        setIsLoading(false);
+        if (!cancelled) {
+          setItem(data);
+        }
+      } catch (error) {
+        console.error("Error fetching item:", error);
+      } finally {
+        if (!cancelled) {
+          setIsLoading(false);
+        }
       }
     }
-  }
 
-  getItems();
+    getItems();
 
-  return () => {
-    cancelled = true;
-  };
-}, [nftId]);
+    return () => {
+      cancelled = true;
+    };
+  }, [nftId]);
 
   // TODO: Instead of "loading", implement a skeleton loading state later on
 
