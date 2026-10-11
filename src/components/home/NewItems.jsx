@@ -9,37 +9,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import NewItem from "../UI/NewItem";
 
-const NewItem = ({
-  collection: { authorImage, expiryDate, nftId, nftImage, title, price, likes },
-}) => {
-  const [hours, setHours] = useState(null);
-  const [minutes, setMinutes] = useState(null);
-  const [seconds, setSeconds] = useState(null);
-  const [item, setItem] = useState(null);
-  const showCountdown = expiryDate && Date.now() <= expiryDate;
-
-  function getExpirationDate() {
-    const millisLeft = expiryDate - Date.now();
-    const secondsLeft = millisLeft / 1000;
-    const minsLeft = secondsLeft / 60;
-    const hoursLeft = minsLeft / 60;
-
-    const displayHours = Math.floor(hoursLeft);
-    const displayMinutes = Math.floor(minsLeft) % 60;
-    const displaySeconds = Math.floor(secondsLeft) % 60;
-
-    setHours(displayHours);
-    setMinutes(displayMinutes);
-    setSeconds(displaySeconds);
-  }
-
-  useEffect(() => {
-    if (showCountdown) {
-      const interval = setInterval(getExpirationDate, 1000);
-      return () => clearInterval(interval);
-    }
-  }, [expiryDate]);
+const NewItems = () => {
+  const [collections, setCollections] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
     axios
@@ -47,8 +22,9 @@ const NewItem = ({
         "https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems",
       )
       .then((res) => {
-        setItem(res.data);
-      });
+        setItems(res.data);
+      })
+      .finally(() => setIsLoading(false));
   }, []);
 
   const settings = {
@@ -84,44 +60,39 @@ const NewItem = ({
   };
 
   return (
-    <div key={nftId}>
-      <div className="nft__item">
-        <div className="author_list_pp">
-          <Link to="/author">
-            <img className="lazy" src={authorImage} alt="" />
-            <i className="fa fa-check"></i>
-          </Link>
-        </div>
-
-        {showCountdown && (
-          <div className="de_countdown">
-            {hours} : {minutes} : {seconds}
+    <section id="section-items" className="no-bottom">
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-12">
+            <div className="text-center">
+              <h2>New Items</h2>
+              <div className="small-border bg-color-2"></div>
+            </div>
           </div>
-        )}
-
-        <div className="nft__item_wrap">
-          <Link to={`/item-details/${nftId}`}>
-            <img
-              src={nftImage}
-              className="lazy nft__item_preview"
-              alt={title}
-            />
-          </Link>
-        </div>
-
-        <div className="nft__item_info">
-          <Link to={`/item-details/${nftId}`}>
-            <h4>{title}</h4>
-          </Link>
-          <div className="nft__item_price">{price} ETH</div>
-          <div className="nft__item_like">
-            <i className="fa fa-heart"></i>
-            <span>{likes}</span>
+          <div className="slider-container">
+            {isLoading ? (
+              <Slider {...settings}>
+                {new Array(4).fill(0).map((_, index) => (
+                  <div key={index}>
+                    <Skeleton height={250} width="100%" />
+                    <Skeleton circle width={40} height={40} />
+                    <Skeleton width={150} />
+                    <Skeleton width={80} />
+                  </div>
+                ))}
+              </Slider>
+            ) : (
+              <Slider {...settings}>
+                {items.map((collection) => (
+                  <NewItem key={collection.id} collection={collection} />
+                ))}
+              </Slider>
+            )}
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default NewItem;
+export default NewItems;
