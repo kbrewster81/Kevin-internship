@@ -1,10 +1,29 @@
 import React from "react";
 import AuthorBanner from "../images/author_banner.jpg";
 import AuthorItems from "../components/author/AuthorItems";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import AuthorImage from "../images/author_thumbnail.jpg";
 
 const Author = () => {
+  const { authorId } = useParams();
+  const [author, setAuthor, AuthorItems] = useState(null);
+  
+
+  useEffect(() => {
+    axios
+      .get(
+        "https://us-central1-nft-cloud-functions.cloudfunctions.net/topSellers"
+      )
+      .then((res) => {
+        const author = res.data.find((author) => author.authorId === authorId);
+        setAuthor(author);
+      })
+      .catch((error) => {
+      });
+  }, [authorId]);
+
   return (
     <div id="wrapper">
       <div className="no-bottom no-top" id="content">
@@ -17,7 +36,6 @@ const Author = () => {
           data-bgimage="url(images/author_banner.jpg) top"
           style={{ background: `url(${AuthorBanner}) top` }}
         ></section>
-
         <section aria-label="section">
           <div className="container">
             <div className="row">
@@ -26,11 +44,10 @@ const Author = () => {
                   <div className="de-flex-col">
                     <div className="profile_avatar">
                       <img src={AuthorImage} alt="" />
-
                       <i className="fa fa-check"></i>
                       <div className="profile_name">
                         <h4>
-                          Monica Lucas
+                          {authorId}
                           <span className="profile_username">@monicaaaa</span>
                           <span id="wallet" className="profile_wallet">
                             UDHUHWudhwd78wdt7edb32uidbwyuidhg7wUHIFUHWewiqdj87dy7
@@ -52,10 +69,9 @@ const Author = () => {
                   </div>
                 </div>
               </div>
-
               <div className="col-md-12">
                 <div className="de_tab tab_simple">
-                  <AuthorItems />
+                  <div className= "AuthorItems" />
                 </div>
               </div>
             </div>
