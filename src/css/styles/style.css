@@ -13698,12 +13698,7 @@ img {
 }
 
 .nft__item .author_list_pp {
-  border-radius: 100% !important;
-  -moz-border-radius: 100% !important;
-  -webkit-border-radius: 100% !important;
-  position: relative;
-  width: 100%;
-  z-index: 1;
+  margin: 0;
 }
 
 .nft__item h4 {

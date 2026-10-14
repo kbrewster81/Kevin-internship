@@ -15,12 +15,10 @@ const Explore = () => {
  
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+  window.scrollTo(0, 0);
+}, []);
 
-    axios.get(
-      "https://us-central1-nft-cloud-functions.cloudfunctions.net/explore",
-    );
-  }, []);
+    
 
   return (
     <div id="wrapper">

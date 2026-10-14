@@ -17,19 +17,35 @@ const ExploreItems = () => {
 
   useEffect(() => {
     axios
-      .get(
-        "https://us-central1-nft-cloud-functions.cloudfunctions.net/explore"
-      )
+      .get("https://us-central1-nft-cloud-functions.cloudfunctions.net/explore")
       .then((res) => {
         setItems(res.data);
       })
       .finally(() => setIsLoading(false));
   }, []);
 
+  async function handleFilterChange(event) {
+    const filter = event.target.value;
+
+    setIsLoading(true);
+
+    try {
+      const response = await axios.get(
+        "https://us-central1-nft-cloud-functions.cloudfunctions.net/explore",
+        { params: { filter } },
+      );
+
+      setItems(response.data);
+    } catch (error) {
+      console.error("Unable to filter items:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  }
   return (
     <>
       <div>
-        <select id="filter-items" defaultValue="">
+        <select id="filter-items" defaultValue="" onChange={handleFilterChange}>
           <option value="">Default</option>
           <option value="price_low_to_high">Price, Low to High</option>
           <option value="price_high_to_low">Price, High to Low</option>
