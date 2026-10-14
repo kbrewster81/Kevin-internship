@@ -1,11 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SubHeader from "../images/subheader.jpg";
 import ExploreItems from "../components/explore/ExploreItems";
+import axios from "axios";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import authorThumbnail from "../images/author_thumbnail.jpg";
+import nftImage from "../images/nftImage.jpg";
+import ExploreItem from "../components/explore/ExploreItem";
 
 const Explore = () => {
+ 
+
   useEffect(() => {
     window.scrollTo(0, 0);
-    // Does this work?
+
+    axios.get(
+      "https://us-central1-nft-cloud-functions.cloudfunctions.net/explore",
+    );
   }, []);
 
   return (

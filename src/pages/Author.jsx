@@ -7,22 +7,34 @@ import { useEffect, useState } from "react";
 import AuthorImage from "../images/author_thumbnail.jpg";
 
 const Author = () => {
-  const { authorId } = useParams();
-  const [author, setAuthor, AuthorItems] = useState(null);
-  
+ const { id: authorId } = useParams();
+ const [author, setAuthor] = useState(null);
+ const [error, setError] = useState("");
 
-  useEffect(() => {
-    axios
-      .get(
-        "https://us-central1-nft-cloud-functions.cloudfunctions.net/topSellers"
+ useEffect(() => {
+   let cancelled = false;
+   setAuthor(null);
+   setError("");
+
+   axios
+     .get(
+       "https://us-central1-nft-cloud-functions.cloudfunctions.net/authors",
+       { params: { author: authorId } }
       )
       .then((res) => {
-        const author = res.data.find((author) => author.authorId === authorId);
-        setAuthor(author);
+        if (!cancelled) setAuthor(res.data);
       })
-      .catch((error) => {
+      .catch(() => {
+        if (!cancelled) setError("Could not load author.");
       });
+
+    return () => {
+      cancelled = true;
+    };
   }, [authorId]);
+
+  if (error) return <p>{error}</p>;
+  if (!author) return <p>Loading author...</p>;
 
   return (
     <div id="wrapper">
@@ -43,14 +55,14 @@ const Author = () => {
                 <div className="d_profile de-flex">
                   <div className="de-flex-col">
                     <div className="profile_avatar">
-                      <img src={AuthorImage} alt="" />
+                      <img src={author.authorImage} alt="" />
                       <i className="fa fa-check"></i>
                       <div className="profile_name">
                         <h4>
-                          {authorId}
-                          <span className="profile_username">@monicaaaa</span>
+                          {author.authorName}
+                          <span className="profile_username">@{author.tag}</span>
                           <span id="wallet" className="profile_wallet">
-                            UDHUHWudhwd78wdt7edb32uidbwyuidhg7wUHIFUHWewiqdj87dy7
+                            {author.address}
                           </span>
                           <button id="btn_copy" title="Copy Text">
                             Copy
@@ -61,7 +73,7 @@ const Author = () => {
                   </div>
                   <div className="profile_follow de-flex">
                     <div className="de-flex-col">
-                      <div className="profile_follower">573 followers</div>
+                      <div className="profile_follower">{author.followers} followers</div>
                       <Link to="#" className="btn-main">
                         Follow
                       </Link>
@@ -71,7 +83,7 @@ const Author = () => {
               </div>
               <div className="col-md-12">
                 <div className="de_tab tab_simple">
-                  <div className= "AuthorItems" />
+                  <AuthorItems author={author} />
                 </div>
               </div>
             </div>
