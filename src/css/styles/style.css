@@ -14229,6 +14229,11 @@ img {
 }
 
 .profile_avatar img {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  position: relative;
+  z-index: 10;
   border-radius: 100%;
   -moz-border-radius: 100%;
   -webkit-border-radius: 100%;
@@ -14268,8 +14273,18 @@ img {
 }
 
 .profile_follower {
-  margin-right: 20px;
-  font-weight: 600;
+  margin-right: 10px;
+  font-weight: 500;
+}
+
+.profile_follow .de-flex-col {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile_follow .btn-main {
+  margin-left: 20px;
 }
 
 .rtl .profile_follower {

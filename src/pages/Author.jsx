@@ -7,21 +7,23 @@ import { useEffect, useState } from "react";
 import AuthorImage from "../images/author_thumbnail.jpg";
 
 const Author = () => {
- const { id: authorId } = useParams();
- const [author, setAuthor] = useState(null);
- const [error, setError] = useState("");
+  const { id: authorId } = useParams();
+  const [author, setAuthor] = useState(null);
+  const [error, setError] = useState("");
+  const [isFollowing, setIsFollowing] = useState(false);
 
- useEffect(() => {
-   let cancelled = false;
-   setAuthor(null);
-   setError("");
+  useEffect(() => {
+    let cancelled = false;
+    setAuthor(null);
+    setError("");
 
-   axios
-     .get(
-       "https://us-central1-nft-cloud-functions.cloudfunctions.net/authors",
-       { params: { author: authorId } }
+    axios
+      .get(
+        "https://us-central1-nft-cloud-functions.cloudfunctions.net/authors",
+        { params: { author: authorId } },
       )
       .then((res) => {
+        console.log("Author data:", res.data);
         if (!cancelled) setAuthor(res.data);
       })
       .catch(() => {
@@ -55,12 +57,14 @@ const Author = () => {
                 <div className="d_profile de-flex">
                   <div className="de-flex-col">
                     <div className="profile_avatar">
-                      <img src={author.authorImage} alt="" />
+                      <img src={author.authorImage} alt="Author profile" />
                       <i className="fa fa-check"></i>
                       <div className="profile_name">
                         <h4>
                           {author.authorName}
-                          <span className="profile_username">@{author.tag}</span>
+                          <span className="profile_username">
+                            @{author.tag}
+                          </span>
                           <span id="wallet" className="profile_wallet">
                             {author.address}
                           </span>
@@ -73,10 +77,15 @@ const Author = () => {
                   </div>
                   <div className="profile_follow de-flex">
                     <div className="de-flex-col">
-                      <div className="profile_follower">{author.followers} followers</div>
-                      <Link to="#" className="btn-main">
-                        Follow
-                      </Link>
+                      <div className="profile_follower">
+                        {author.followers + (isFollowing ? 1 : 0)} followers
+                        <button
+                          className="btn-main"
+                          onClick={() => setIsFollowing(!isFollowing)}
+                        >
+                          {isFollowing ? "Following" : "Follow"}
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
