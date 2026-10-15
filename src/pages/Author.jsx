@@ -23,7 +23,6 @@ const Author = () => {
         { params: { author: authorId } },
       )
       .then((res) => {
-        console.log("Author data:", res.data);
         if (!cancelled) setAuthor(res.data);
       })
       .catch(() => {
