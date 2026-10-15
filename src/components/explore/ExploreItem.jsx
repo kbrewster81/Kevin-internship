@@ -9,6 +9,7 @@ import axios from "axios";
 const ExploreItem = ({
   collection: {
     id,
+    authorId,
     authorImage,
     expiryDate,
     nftId,
@@ -18,7 +19,6 @@ const ExploreItem = ({
     likes,
   },
 }) => {
-  
   const [hours, setHours] = useState(null);
   const [minutes, setMinutes] = useState(null);
   const [seconds, setSeconds] = useState(null);
@@ -46,14 +46,12 @@ const ExploreItem = ({
       return () => clearInterval(interval);
     }
   }, [expiryDate]);
-  
 
   return (
     <div key={id}>
       <div className="nft__item">
         <div className="author_list_pp">
-        
-          <Link to="/author">
+          <Link to={`/author/${authorId}`}>
             <img className="lazy" src={authorImage} alt="" />
             <i className="fa fa-check"></i>
           </Link>
