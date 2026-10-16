@@ -6,6 +6,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import AuthorImage from "../images/author_thumbnail.jpg";
 
+
 const Author = () => {
   const { id: authorId } = useParams();
   const [author, setAuthor] = useState(null);

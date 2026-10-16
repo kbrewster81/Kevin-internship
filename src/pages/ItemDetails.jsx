@@ -7,11 +7,13 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import Author from "./Author";
 
 const ItemDetails = () => {
   const [item, setItem] = useState(null);
   const { id: nftId } = useParams();
   const [isLoading, setIsLoading] = useState(true);
+  const [author, setAuthor] = useState(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -19,7 +21,7 @@ const ItemDetails = () => {
     async function getItems() {
       setIsLoading(true);
       setItem(null);
-
+      setAuthor(null);
       try {
         const { data } = await axios.get(
           `https://us-central1-nft-cloud-functions.cloudfunctions.net/itemDetails?nftId=${nftId}`,
@@ -43,8 +45,6 @@ const ItemDetails = () => {
       cancelled = true;
     };
   }, [nftId]);
-
-  // TODO: Instead of "loading", implement a skeleton loading state later on
 
   return (
     <div id="wrapper">
@@ -70,7 +70,10 @@ const ItemDetails = () => {
                     {isLoading ? (
                       <Skeleton width={250} />
                     ) : (
-                      item?.name || item?.title || "Title not found"
+                      <>
+                        {item?.name || item?.title || "Title not found"} {"#"}
+                        {item?.tag}
+                      </>
                     )}
                   </h2>
                   <div className="item_info_counts">
