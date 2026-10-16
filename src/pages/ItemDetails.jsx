@@ -70,8 +70,10 @@ const ItemDetails = () => {
                     {isLoading ? (
                       <Skeleton width={250} />
                     ) : (
-                      (item?.name || item?.title || "Title not found",
-                      item?.tag)
+                      <>
+                        {item?.name || item?.title || "Title not found"} {"#"}
+                        {item?.tag}
+                      </>
                     )}
                   </h2>
                   <div className="item_info_counts">
