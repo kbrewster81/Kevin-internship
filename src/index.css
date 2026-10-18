@@ -1,0 +1,31 @@
+@import "./css/styles/bootstrap.min.css";
+@import "./css/styles/bootstrap-grid.min.css";
+@import "./css/styles/bootstrap-reboot.min.css";
+@import "./css/styles/animate.css";
+@import "./css/styles/owl.carousel.css";
+@import "./css/styles/owl.theme.css";
+@import "./css/styles/owl.transitions.css";
+@import "./css/styles/magnific-popup.css";
+@import "./css/styles/jquery.countdown.css";
+@import "./css/styles/style.css";
+@import "./css/colors/scheme-01.css";
+@import "./css/styles/coloring.css";
+
+#section-items .nft__item .author_list_pp {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 50px;
+  margin: 0;
+  z-index: 10;
+}
+
+#section-items .nft__item .author_list_pp img {
+  display: block;
+  border-radius: 50%;
+}
+
+#section-items .nft__item .de_countdown {
+  top: 20px;
+  right: 20px;
+}
