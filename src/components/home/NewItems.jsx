@@ -1,19 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import AuthorImage from "../../images/author_thumbnail.jpg";
-import nftImage from "../../images/nftImage.jpg";
-<<<<<<< HEAD
-import AOS from "aos";
-=======
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import NewItem from "../UI/NewItem";
->>>>>>> b961c486b83888b6161169ea252f9c9a1610072f
 
 const NewItems = () => {
   const [collections, setCollections] = useState([]);

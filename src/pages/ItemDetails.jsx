@@ -1,17 +1,9 @@
 import React, { useEffect, useState } from "react";
 import EthImage from "../images/ethereum.svg";
-import { Link, Route } from "react-router-dom";
-import AuthorImage from "../images/author_thumbnail.jpg";
-import nftImage from "../images/nftImage.jpg";
-<<<<<<< HEAD
-import AOS from "aos";
-=======
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import Author from "./Author";
->>>>>>> b961c486b83888b6161169ea252f9c9a1610072f
 
 const ItemDetails = () => {
   const [item, setItem] = useState(null);
