@@ -19,6 +19,7 @@ const Author = () => {
         ></section>
 
         <section aria-label="section">
+          <div data-aos="fade-up"></div>
           <div className="container">
             <div className="row">
               <div className="col-md-12">

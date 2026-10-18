@@ -3,6 +3,7 @@ import EthImage from "../images/ethereum.svg";
 import { Link } from "react-router-dom";
 import AuthorImage from "../images/author_thumbnail.jpg";
 import nftImage from "../images/nftImage.jpg";
+import AOS from "aos";
 
 const ItemDetails = () => {
   useEffect(() => {
@@ -11,6 +12,7 @@ const ItemDetails = () => {
 
   return (
     <div id="wrapper">
+      <div data-aos="fade-up"></div>
       <div className="no-bottom no-top" id="content">
         <div id="top"></div>
         <section aria-label="section" className="mt90 sm-mt-0">

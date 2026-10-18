@@ -2,10 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import AuthorImage from "../../images/author_thumbnail.jpg";
 import nftImage from "../../images/nftImage.jpg";
+import AOS from "aos";
 
 const HotCollections = () => {
   return (
     <section id="section-collections" className="no-bottom">
+      <div data-aos="fade-up"></div>
       <div className="container">
         <div className="row">
           <div className="col-lg-12">

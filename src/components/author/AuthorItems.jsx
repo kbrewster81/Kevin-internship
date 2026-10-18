@@ -2,10 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import AuthorImage from "../../images/author_thumbnail.jpg";
 import nftImage from "../../images/nftImage.jpg";
+import AOS from "aos";
 
 const AuthorItems = () => {
   return (
     <div className="de_tab_content">
+      <div data-aos="fade-up"></div>
       <div className="tab-1">
         <div className="row">
           {new Array(8).fill(0).map((_, index) => (

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import AuthorImage from "../../images/author_thumbnail.jpg";
 import nftImage from "../../images/nftImage.jpg";
+import AOS from "aos";
 
 const ExploreItems = () => {
   return (
@@ -21,6 +22,7 @@ const ExploreItems = () => {
           style={{ display: "block", backgroundSize: "cover" }}
         >
           <div className="nft__item">
+            <div data-aos="fade-up"></div>
             <div className="author_list_pp">
               <Link
                 to="/author"

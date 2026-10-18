@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import AuthorImage from "../../images/author_thumbnail.jpg";
-
+import AOS from "aos";
 const TopSellers = () => {
   return (
     <section id="section-popular" className="pb-5">
+      <div data-aos="fade-up"></div>
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
