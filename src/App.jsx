@@ -10,7 +10,11 @@ import AuthorItems from "./components/author/AuthorItems";
 
 function App() {
   return (
-    <Router>
+    <Router
+      basename={
+        process.env.NODE_ENV === "production" ? "/Kevin-internship" : "/"
+      }
+    >
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
