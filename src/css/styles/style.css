@@ -46,6 +46,17 @@ body {
   word-spacing: 0px;
 }
 
+.slider-container .slick-prev:before,
+.slider-container .slick-next:before {
+  color: black;
+  font-size: 20px;
+}
+
+.slider-container .slick-prev,
+.slider-container .slick-next {
+  z-index: 4;
+}
+
 .dark-scheme {
   color: #9fa4dd;
 }
@@ -10130,7 +10141,9 @@ i.bg-color-secondary {
 }
 
 .soft-shadow {
-  box-shadow: 0 0.25rem 0.5rem rgb(0 0 0 / 5%), 0 1.5rem 2.2rem rgb(0 0 0 / 10%);
+  box-shadow:
+    0 0.25rem 0.5rem rgb(0 0 0 / 5%),
+    0 1.5rem 2.2rem rgb(0 0 0 / 10%);
 }
 
 .tooltip-inner {
@@ -10160,7 +10173,9 @@ i.bg-color-secondary {
 .tooltip.bs-tooltip-bottom .tooltip-arrow::before,
 .tooltip.bs-tooltip-start .tooltip-arrow::before,
 .tooltip.bs-tooltip-end .tooltip-arrow::before {
-  box-shadow: 0 0.25rem 0.5rem rgb(0 0 0 / 5%), 0 1.5rem 2.2rem rgb(0 0 0 / 10%);
+  box-shadow:
+    0 0.25rem 0.5rem rgb(0 0 0 / 5%),
+    0 1.5rem 2.2rem rgb(0 0 0 / 10%);
 }
 
 #item-carousel-big {
@@ -13203,16 +13218,6 @@ a.read_more i {
   border: solid 1px rgba(255, 255, 255, 0.1);
 }
 
-.nft_wrap {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  border-radius: 10px 10px 0 0;
-  -moz-border-radius: 10px 10px 0 0;
-  -webkit-border-radius: 10px 10px 0 0;
-}
-
 .nft_coll:hover img {
   transform: scale(1.05);
 }
@@ -13618,6 +13623,14 @@ a.read_more i {
 .item_author .author_list_info {
   padding-top: 10px;
   padding-left: 70px;
+}
+
+img {
+  width: 100%;
+}
+.nft_wrap {
+  height: auto;
+  position: relative;
 }
 
 .nft__item {
@@ -14216,6 +14229,11 @@ a.read_more i {
 }
 
 .profile_avatar img {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  position: relative;
+  z-index: 10;
   border-radius: 100%;
   -moz-border-radius: 100%;
   -webkit-border-radius: 100%;
@@ -14255,8 +14273,18 @@ a.read_more i {
 }
 
 .profile_follower {
-  margin-right: 20px;
-  font-weight: 600;
+  margin-right: 10px;
+  font-weight: 500;
+}
+
+.profile_follow .de-flex-col {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile_follow .btn-main {
+  margin-left: 20px;
 }
 
 .rtl .profile_follower {
@@ -14408,26 +14436,34 @@ a.read_more i {
 
 @-webkit-keyframes ripple {
   0% {
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.3),
-      0 0 0 1em rgba(255, 255, 255, 0.3), 0 0 0 3em rgba(255, 255, 255, 0.3),
+    box-shadow:
+      0 0 0 0 rgba(255, 255, 255, 0.3),
+      0 0 0 1em rgba(255, 255, 255, 0.3),
+      0 0 0 3em rgba(255, 255, 255, 0.3),
       0 0 0 5em rgba(255, 255, 255, 0.3);
   }
   100% {
-    box-shadow: 0 0 0 1em rgba(255, 255, 255, 0.3),
-      0 0 0 3em rgba(255, 255, 255, 0.3), 0 0 0 5em rgba(255, 255, 255, 0.3),
+    box-shadow:
+      0 0 0 1em rgba(255, 255, 255, 0.3),
+      0 0 0 3em rgba(255, 255, 255, 0.3),
+      0 0 0 5em rgba(255, 255, 255, 0.3),
       0 0 0 8em rgba(255, 255, 255, 0);
   }
 }
 
 @keyframes ripple {
   0% {
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.3),
-      0 0 0 1em rgba(255, 255, 255, 0.3), 0 0 0 3em rgba(255, 255, 255, 0.3),
+    box-shadow:
+      0 0 0 0 rgba(255, 255, 255, 0.3),
+      0 0 0 1em rgba(255, 255, 255, 0.3),
+      0 0 0 3em rgba(255, 255, 255, 0.3),
       0 0 0 5em rgba(255, 255, 255, 0.3);
   }
   100% {
-    box-shadow: 0 0 0 1em rgba(255, 255, 255, 0.3),
-      0 0 0 3em rgba(255, 255, 255, 0.3), 0 0 0 5em rgba(255, 255, 255, 0.3),
+    box-shadow:
+      0 0 0 1em rgba(255, 255, 255, 0.3),
+      0 0 0 3em rgba(255, 255, 255, 0.3),
+      0 0 0 5em rgba(255, 255, 255, 0.3),
       0 0 0 8em rgba(255, 255, 255, 0);
   }
 }

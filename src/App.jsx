@@ -5,6 +5,8 @@ import Author from "./pages/Author";
 import ItemDetails from "./pages/ItemDetails";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+import TopSellers from "./components/home/TopSellers";
+import AuthorItems from "./components/author/AuthorItems";
 
 function App() {
   return (
@@ -13,8 +15,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/explore" element={<Explore />} />
-        <Route path="/author" element={<Author />} />
-        <Route path="/item-details" element={<ItemDetails />} />
+        <Route path="/author/:id" element={<Author />} />
+        <Route path="/item-details/:id" element={<ItemDetails />} />
+        <Route path="/TopSellers" element={<TopSellers />} />
+        <Route path="/AuthorItems/:id" element={<AuthorItems />} />
       </Routes>
       <Footer />
     </Router>
