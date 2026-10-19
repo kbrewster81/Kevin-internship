@@ -44,8 +44,7 @@ const ItemDetails = () => {
 
   return (
     <div id="wrapper">
-      <div data-aos="fade-up"></div>
-      <div className="no-bottom no-top" id="content">
+      <div className="no-bottom no-top" id="content" data-aos="fade-up">
         <div id="top"></div>
         <section aria-label="section" className="mt90 sm-mt-0">
           <div className="container">

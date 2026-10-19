@@ -7,8 +7,13 @@ import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import TopSellers from "./components/home/TopSellers";
 import AuthorItems from "./components/author/AuthorItems";
-
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 function App() {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <Router
       basename={

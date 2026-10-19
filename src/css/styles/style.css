@@ -13222,10 +13222,6 @@ a.read_more i {
   transform: scale(1.05);
 }
 
-.nft_coll {
-  text-align: center;
-}
-
 .nft_coll_info {
   padding-bottom: 10px;
 }
@@ -13277,6 +13273,11 @@ a.read_more i {
   position: absolute;
   bottom: 4px;
   right: 5px;
+}
+
+#section-collections .slider-container .slick-slide {
+  padding: 0 8px;
+  box-sizing: border-box;
 }
 
 .author_list {

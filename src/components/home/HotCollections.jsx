@@ -4,6 +4,7 @@ import axios from "axios";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import AOS from "aos";
 
 const HotCollections = () => {
   const [collections, setCollections] = useState([]);
@@ -53,8 +54,7 @@ const HotCollections = () => {
 
   return (
     <section id="section-collections" className="no-bottom">
-      <div data-aos="fade-up"></div>
-      <div className="container">
+      <div className="container" data-aos="fade-up">
         <div className="row">
           <div className="col-lg-12">
             <div className="text-center">

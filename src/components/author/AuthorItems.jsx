@@ -6,7 +6,7 @@ import AOS from "aos";
 
 const AuthorItems = ({ author }) => {
   return (
-    <div className="de_tab_content">
+    <div className="de_tab_content" data-aos="fade-up">
       <div data-aos="fade-up"></div>
       <div className="tab-1">
         <div className="row">

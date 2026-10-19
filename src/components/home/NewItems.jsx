@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import NewItem from "../UI/NewItem";
+import AOS from "aos";
 
 const NewItems = () => {
   const [collections, setCollections] = useState([]);
