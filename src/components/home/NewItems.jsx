@@ -58,8 +58,7 @@ const NewItems = () => {
 
   return (
     <section id="section-items" className="no-bottom">
-      <div data-aos="fade-up"></div>
-      <div className="container">
+      <div className="container" data-aos="fade-up">
         <div className="row">
           <div className="col-lg-12">
             <div className="text-center">

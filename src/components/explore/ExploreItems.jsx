@@ -7,9 +7,10 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const ExploreItems = () => {
+  const [visibleCount, setVisibleCount] = useState(8);
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [visibleCount, setVisibleCount] = useState(8);
+  ;
 
   useEffect(() => {
     axios
@@ -116,7 +117,7 @@ const ExploreItems = () => {
             className="btn-main lead"
             onClick={() => setVisibleCount((prev) => prev + 8)}
           >
-            Load more
+            Load More
           </button>
         </div>
       )}

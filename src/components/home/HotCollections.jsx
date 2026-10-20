@@ -54,7 +54,7 @@ const HotCollections = () => {
 
   return (
     <section id="section-collections" className="no-bottom">
-      <div className="container" data-aos="fade-up">
+      <div className="container"data-aos="fade-up">
         <div className="row">
           <div className="col-lg-12">
             <div className="text-center">
@@ -65,7 +65,7 @@ const HotCollections = () => {
           <div className="slider-container">
             <Slider {...settings}>
               {collections.map((collection) => (
-                <div key={collection.id}>
+                <div key={collection.id} style={{ padding: "0 10px" }}>
                   <div className="nft_coll">
                     <div className="nft_wrap">
                       <Link to={`/item-details/${collection.nftId}`}>

@@ -1,4 +1,5 @@
 import Home from "./pages/Home";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Explore from "./pages/Explore";
 import Author from "./pages/Author";
@@ -7,12 +8,12 @@ import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import TopSellers from "./components/home/TopSellers";
 import AuthorItems from "./components/author/AuthorItems";
-import { useEffect } from "react";
-import AOS from "aos";
+import Aos from "aos";
 import "aos/dist/aos.css";
+
 function App() {
   useEffect(() => {
-    AOS.init();
+    Aos.init();
   }, []);
   return (
     <Router

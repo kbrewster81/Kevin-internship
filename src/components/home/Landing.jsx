@@ -17,25 +17,20 @@ const Landing = () => {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-md-6">
-              <div className="spacer-single"></div>
-              <h6>
-                <div data-aos="fade-in" data-aos-duration="4000"></div>
-                <span className="text-uppercase id-color-2">
+                <span className="text-uppercase id-color-2" data-aos="fade-up" data-aos-duration="1500">
                   Ultraverse Market
                 </span>
-              </h6>
-              <div className="spacer-10">
-                <div className="data-aos= fadeInUp">
-                  <h1>
-                    Create, sell or collect digital items.
-                    <p className="lead">
-                      Unit of data stored on a digital ledger, called a
-                      blockchain, that certifies a digital asset to be unique
-                      and therefore not interchangeable
-                    </p>
-                  </h1>
-                </div>
-              </div>
+
+              <div className="spacer-10"></div>
+              <h1 data-aos="fade-up" data-aos-duration="1500">
+                Create, sell or collect digital items.
+              </h1>
+              <p className="lead"
+                data-aos="fade-up" data-aos-duration="1500">
+                Unit of data stored on a digital ledger, called a blockchain,
+                that certifies a digital asset to be unique and therefore not
+                interchangeable
+              </p>
               <div className="spacer-10"></div>
               <Link className="btn-main lead" to="/explore">
                 Explore
@@ -43,7 +38,9 @@ const Landing = () => {
               <div className="mb-sm-30"></div>
             </div>
             <div className="col-md-6 xs-hide">
+              <h1 data-aos="fade-up" data-aos-duration="1500">
               <img src={NFT} className="lazy img-fluid" alt="" />
+              </h1>
             </div>
           </div>
         </div>
