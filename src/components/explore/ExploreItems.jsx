@@ -1,16 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import AuthorImage from "../../images/author_thumbnail.jpg";
-import nftImage from "../../images/nftImage.jpg";
-import AOS from "aos";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
 const ExploreItems = () => {
   const [visibleCount, setVisibleCount] = useState(8);
   const [items, setItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  ;
+  const [sortBy, setSortBy] = useState("");
 
   useEffect(() => {
     axios
@@ -18,31 +14,38 @@ const ExploreItems = () => {
       .then((res) => {
         setItems(res.data);
       })
-      .finally(() => setIsLoading(false));
+      .catch((error) => {
+        console.error("Unable to fetch items:", error);
+      });
   }, []);
 
-  async function handleFilterChange(event) {
-    const filter = event.target.value;
-
-    setIsLoading(true);
-
-    try {
-      const response = await axios.get(
-        "https://us-central1-nft-cloud-functions.cloudfunctions.net/explore",
-        { params: { filter } },
-      );
-
-      setItems(response.data);
-    } catch (error) {
-      console.error("Unable to filter items:", error);
-    } finally {
-      setIsLoading(false);
+  const sortedItems = [...items].sort((a, b) => {
+    if (sortBy === "price_low_to_high") {
+      return parseFloat(a.price) - parseFloat(b.price);
     }
-  }
+
+    if (sortBy === "price_high_to_low") {
+      return parseFloat(b.price) - parseFloat(a.price);
+    }
+
+    if (sortBy === "likes_high_to_low") {
+      return Number(b.likes) - Number(a.likes);
+    }
+
+    return 0;
+  });
+
   return (
     <>
       <div>
-        <select id="filter-items" defaultValue="" onChange={handleFilterChange}>
+        <select
+          id="filter-items"
+          value={sortBy}
+          onChange={(e) => {
+            setSortBy(e.target.value);
+            setVisibleCount(8);
+          }}
+        >
           <option value="">Default</option>
           <option value="price_low_to_high">Price, Low to High</option>
           <option value="price_high_to_low">Price, High to Low</option>
@@ -50,7 +53,7 @@ const ExploreItems = () => {
         </select>
       </div>
 
-      {items.slice(0, visibleCount).map((item) => (
+      {sortedItems.slice(0, visibleCount).map((item) => (
         <div
           key={item.id}
           className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
@@ -75,14 +78,19 @@ const ExploreItems = () => {
                   <button>Buy Now</button>
                   <div className="nft__item_share">
                     <h4>Share</h4>
-                    <a href="" target="_blank" rel="noreferrer">
+                    <a
+                      href="https://www.facebook.com/"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       <i className="fa fa-facebook fa-lg"></i>
                     </a>
-                    <a href="" target="_blank" rel="noreferrer">
+                    <a
+                      href="https://www.twitter.com/"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       <i className="fa fa-twitter fa-lg"></i>
-                    </a>
-                    <a href="">
-                      <i className="fa fa-envelope fa-lg"></i>
                     </a>
                   </div>
                 </div>

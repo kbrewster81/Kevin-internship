@@ -1,11 +1,9 @@
 import React from "react";
 import AuthorBanner from "../images/author_banner.jpg";
 import AuthorItems from "../components/author/AuthorItems";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import AuthorImage from "../images/author_thumbnail.jpg";
-
 
 const Author = () => {
   const { id: authorId } = useParams();

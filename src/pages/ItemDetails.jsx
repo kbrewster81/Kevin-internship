@@ -1,20 +1,15 @@
 import React, { useEffect, useState } from "react";
 import EthImage from "../images/ethereum.svg";
-import { Link, Route } from "react-router-dom";
-import AuthorImage from "../images/author_thumbnail.jpg";
-import nftImage from "../images/nftImage.jpg";
-import AOS from "aos";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import Author from "./Author";
 
 const ItemDetails = () => {
   const [item, setItem] = useState(null);
   const { id: nftId } = useParams();
   const [isLoading, setIsLoading] = useState(true);
-  const [author, setAuthor] = useState(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -22,7 +17,6 @@ const ItemDetails = () => {
     async function getItems() {
       setIsLoading(true);
       setItem(null);
-      setAuthor(null);
       try {
         const { data } = await axios.get(
           `https://us-central1-nft-cloud-functions.cloudfunctions.net/itemDetails?nftId=${nftId}`,
@@ -49,7 +43,8 @@ const ItemDetails = () => {
 
   return (
     <div id="wrapper">
-      <div className="no-bottom no-top" id="content" data-aos="fade-up">
+      <div data-aos="fade-up"></div>
+      <div className="no-bottom no-top" id="content">
         <div id="top"></div>
         <section aria-label="section" className="mt90 sm-mt-0">
           <div className="container">
@@ -95,13 +90,13 @@ const ItemDetails = () => {
                       <h6>Owner</h6>
                       <div className="item_author">
                         <div className="author_list_pp">
-                          <Link to={item ? `/author/${item.ownerId}` : "#"}>
+                          <Link to={`/author/${item?.ownerId}`}>
                             {isLoading ? (
                               <Skeleton circle width={50} height={50} />
                             ) : (
                               <img
                                 className="lazy"
-                                src={item?.ownerImage}
+                                src={item.ownerImage}
                                 alt=""
                               />
                             )}
@@ -110,7 +105,7 @@ const ItemDetails = () => {
                           </Link>
                         </div>
                         <div className="author_list_info">
-                          <Link to={item ? `/author/${item.ownerId}` : "#"}>
+                          <Link to={`/author/${item?.ownerId}`}>
                             {isLoading ? (
                               <Skeleton width={100} />
                             ) : (
@@ -127,7 +122,7 @@ const ItemDetails = () => {
                       <h6>Creator</h6>
                       <div className="item_author">
                         <div className="author_list_pp">
-                          <Link to={item ? `/author/${item.ownerId}` : "#"}>
+                          <Link to={`/author/${item?.creatorId}`}>
                             {isLoading ? (
                               <Skeleton circle width={50} height={50} />
                             ) : (
@@ -141,7 +136,7 @@ const ItemDetails = () => {
                           </Link>
                         </div>
                         <div className="author_list_info">
-                          <Link to={item ? `/author/${item.ownerId}` : "#"}>
+                          <Link to={`/author/${item?.creatorId}`}>
                             {isLoading ? (
                               <Skeleton width={100} />
                             ) : (

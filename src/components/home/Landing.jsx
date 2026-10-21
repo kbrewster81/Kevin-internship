@@ -2,7 +2,6 @@ import React from "react";
 import NFT from "../../images/nft.png";
 import backgroundImage from "../../images/bg-shape-1.jpg";
 import { Link } from "react-router-dom";
-import AOS from "aos";
 
 const Landing = () => {
   return (
@@ -17,16 +16,19 @@ const Landing = () => {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-md-6">
-                <span className="text-uppercase id-color-2" data-aos="fade-up" data-aos-duration="1500">
-                  Ultraverse Market
-                </span>
+              <span
+                className="text-uppercase id-color-2"
+                data-aos="fade-up"
+                data-aos-duration="1500"
+              >
+                Ultraverse Market
+              </span>
 
               <div className="spacer-10"></div>
               <h1 data-aos="fade-up" data-aos-duration="1500">
                 Create, sell or collect digital items.
               </h1>
-              <p className="lead"
-                data-aos="fade-up" data-aos-duration="1500">
+              <p className="lead" data-aos="fade-up" data-aos-duration="1500">
                 Unit of data stored on a digital ledger, called a blockchain,
                 that certifies a digital asset to be unique and therefore not
                 interchangeable
@@ -39,7 +41,7 @@ const Landing = () => {
             </div>
             <div className="col-md-6 xs-hide">
               <h1 data-aos="fade-up" data-aos-duration="1500">
-              <img src={NFT} className="lazy img-fluid" alt="" />
+                <img src={NFT} className="lazy img-fluid" alt="" />
               </h1>
             </div>
           </div>

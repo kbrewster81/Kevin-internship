@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import AOS from "aos";
 
 const BrowseByCategory = () => {
   return (
     <section id="section-category" className="no-top">
-      <div className="container"data-aos="fade-right" data-aos-duration="1200">
+      <div className="container" data-aos="fade-right" data-aos-duration="1200">
         <div className="row">
           <div className="col-lg-12">
             <div className="text-center">

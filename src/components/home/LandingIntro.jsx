@@ -1,10 +1,9 @@
 import React from "react";
-import AOS from "aos";
 
 const LandingIntro = () => {
   return (
     <section id="section-intro" className="no-top no-bottom">
-      <div className="container"data-aos="fade-up"data-aos-duration="1200">
+      <div className="container" data-aos="fade-up" data-aos-duration="1200">
         <div className="row">
           <div className="col-lg-4 col-md-6 mb-sm-30">
             <div className="feature-box f-boxed style-3">

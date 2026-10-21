@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "react-loading-skeleton/dist/skeleton.css";
-import axios from "axios";
+
 
 const ExploreItem = ({
   collection: {
@@ -25,27 +25,28 @@ const ExploreItem = ({
 
   const showCountdown = expiryDate && Date.now() <= expiryDate;
 
-  function getExpirationDate() {
-    const millisLeft = expiryDate - Date.now();
-    const secondsLeft = millisLeft / 1000;
-    const minsLeft = secondsLeft / 60;
-    const hoursLeft = minsLeft / 60;
+  useEffect(() => {
+  if (!expiryDate) return;
 
-    const displayHours = Math.floor(hoursLeft);
-    const displayMinutes = Math.floor(minsLeft) % 60;
-    const displaySeconds = Math.floor(secondsLeft) % 60;
+  function getExpirationDate() {
+    const millisLeft = Math.max(0, expiryDate - Date.now());
+    const secondsLeft = Math.floor(millisLeft / 1000);
+
+    const displayHours = Math.floor(secondsLeft / 3600);
+    const displayMinutes = Math.floor((secondsLeft % 3600) / 60);
+    const displaySeconds = secondsLeft % 60;
 
     setHours(displayHours);
     setMinutes(displayMinutes);
     setSeconds(displaySeconds);
   }
 
-  useEffect(() => {
-    if (showCountdown) {
-      const interval = setInterval(getExpirationDate, 1000);
-      return () => clearInterval(interval);
-    }
-  }, [expiryDate]);
+  getExpirationDate();
+
+  const interval = setInterval(getExpirationDate, 1000);
+
+  return () => clearInterval(interval);
+}, [expiryDate]);
 
   return (
     <div key={id}>

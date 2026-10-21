@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import AOS from "aos";
 
 const TopSellers = () => {
-  const [sellers, setSellers] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [collections, setCollections] = useState([]);
+  const [sellers, setSeller] = useState([]);
+  const [setIsLoading] = useState(true);
 
   useEffect(() => {
     axios
@@ -14,10 +12,10 @@ const TopSellers = () => {
         "https://us-central1-nft-cloud-functions.cloudfunctions.net/topSellers",
       )
       .then((res) => {
-        setSellers(res.data);
+        setSeller(res.data);
       })
       .finally(() => setIsLoading(false));
-  }, []);
+  }, [setIsLoading]);
 
   return (
     <section id="section-popular" className="pb-5">
