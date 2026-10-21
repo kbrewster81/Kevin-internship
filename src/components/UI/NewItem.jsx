@@ -11,6 +11,7 @@ const NewItem = ({
     title,
     price,
     likes,
+    authorId,
   },
 }) => {
   const [hours, setHours] = useState(null);
@@ -46,7 +47,7 @@ const NewItem = ({
     <div key={id}>
       <div className="nft__item">
         <div className="author_list_pp">
-          <Link to="/author">
+          <Link to={`/author/${authorId}`}>
             <img className="lazy" src={authorImage} alt="" />
             <i className="fa fa-check"></i>
           </Link>
