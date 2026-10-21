@@ -16338,6 +16338,18 @@ img {
   }
 
   .profile_avatar i {
+    color: #ffffff;
+    margin: 110px 0 0 110px;
+    display: block;
+    position: absolute;
+    padding: 10px;
+    border-radius: 100%;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    z-index: 11;
+  }
+
+  .profile_avatar i {
     margin-top: -40px;
   }
 
