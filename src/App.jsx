@@ -16,11 +16,7 @@ function App() {
     Aos.init();
   }, []);
   return (
-    <Router
-      basename={
-        process.env.NODE_ENV === "production" ? "/Kevin-internship" : "/"
-      }
-    >
+    <Router>
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
